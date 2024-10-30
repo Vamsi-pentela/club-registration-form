@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Club Membership Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="form-container">
+        <form action="/submit" method="post">
+            <h2>Vamsi's Club Registration Form</h2>
+
+            <div class="form-group">
+                <label for="first-name">Name</label>
+                <div class="name-inputs">
+                    <input name="name" type="text" id="first-name" placeholder="First">
+                    <input name="last" type="text" id="last-name" placeholder="Last">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input name="email" type="email" id="email" placeholder="Email">
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone</label>
+                <input name="phone" type="tel" id="phone" placeholder="+91 ----------">
+            </div>
+
+            <div class="form-group">
+                <label for="birth-date">Birth Date</label>
+                <input name="date" type="date" id="birth-date">
+            </div>
+
+            <div class="form-group">
+                <label>Gender</label>
+                <div class="gender-options">
+                    <label><input type="radio" name="gender" value="male"> Male</label>
+                    <label><input type="radio" name="gender" value="female"> Female</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Where did you hear about us?</label>
+                <div class="checkbox-group">
+                    <label><input name="find" value="a" type="checkbox"> A Friend or Colleague</label>
+                    <label><input name="find" value="b" type="checkbox"> Google</label>
+                    <label><input name="find" value="c" type="checkbox"> Blog Post</label>
+                    <label><input name="find" value="d" type="checkbox"> News Article</label>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label>Preferred Club Type</label>
+                <div class="club-options">
+                    <label><input type="checkbox" name="club_type" value="sports"> Sports</label>
+                    <label><input type="checkbox" name="club_type" value="arts"> Arts</label>
+                    <label><input type="checkbox" name="club_type" value="culture"> Culture</label>
+                    <label><input type="checkbox" name="club_type" value="music"> Music</label>
+                    <label><input type="checkbox" name="club_type" value="literature"> Literature</label>
+                </div>
+            </div>
+
+            <div class="rules">
+                <label class="checkbox">
+                    <input onchange="toggleSubmitButton()" type="checkbox" id="rules" required>
+                    I have read all rules and conditions, understood, and accepted the <a href="/rules">rules for membership</a>.
+                </label>
+            </div>
+
+            <button id="submit" type="submit" class="disabled" disabled>SEND</button>
+            
+            <script>
+                function toggleSubmitButton() {
+                    const rules = document.getElementById('rules');
+                    const submit = document.getElementById('submit');
+                    submit.disabled = !rules.checked;
+                    submit.classList.toggle('enabled', rules.checked);
+                }
+
+                const phone = document.getElementById('phone');
+                phone.addEventListener('input', () => {
+                    if (phone.value.length === 10) {
+                        phone.style.border = "2px solid green";
+                    } else {
+                        phone.style.border = "3px solid red";
+                    }
+                });
+            </script>
+        </form>
+    </div>
+</body>
+</html>
